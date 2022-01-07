@@ -1,0 +1,87 @@
+
+.navbar{
+    display: flex;
+    padding: 5px;
+    /* border: 1px solid black; */
+    text-align: center;
+    justify-content: space-between;
+}
+.leftSide{
+    flex: 1;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+}
+.middle{
+    flex: 3;
+}
+.rightSide{
+   flex: 2;
+   display: flex;
+   text-align: center;
+   justify-content: space-around;
+}
+.inputbox{
+    width: 75%;
+    /* text-align: center; */
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 13px 10px;
+}
+a{
+    margin: 5px;
+    color: black;
+    font-size: 24px;
+    padding: 5px 10px;
+    font-weight: bold;
+    text-decoration: none;
+    /* display: inline-block; */
+}
+a:hover{
+    border-radius: 10px;
+    transition: .1s all ease;
+    border: 3px solid #e40000;
+
+}
+
+/* wirte styles for recepie data .. */
+.container{
+    width: 90%;
+    margin:10px auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 30px;
+
+}
+.container>div{
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    /* border: 1px solid black; */
+
+}
+.container>div:hover{
+    padding: 0;
+    cursor: pointer;
+    transition: .8s all ease;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    /* border: 1px solid black; */
+
+}
+.container>div>div>img{
+    border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid black; */
+
+}
+.container>div>p{
+font-size: 18px;
+font-weight: bold;
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+  /* border: 1px solid black; */
+
+}
