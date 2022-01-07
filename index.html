@@ -1,35 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>index page</title>
     <link rel="stylesheet" href="./styles/index.css">
 </head>
+
 <body>
     <nav></nav>
-    
+
+    <div class ="recpData"></div>
     <div class="container"></div>
 </body>
+
 </html>
 <script type="module">
     import navbar from "./components/navbar.js";
     document.querySelector("nav").innerHTML = navbar();
-    
-    import {getData,appendData} from "./script/showData.js";
-    console.log(getData,appendData);
+
+    import { getData, appendData } from "./script/showData.js";
+    // console.log(getData,appendData);
 
 
-
-    let container = document.querySelector(".container");
     let response = getData("https://www.themealdb.com/api/json/v1/1/categories.php");
 
-    response.then((res) =>{
-        console.log(res);
+
+    let rspData =  document.querySelector(".recpData");    
+    let container = document.querySelector(".container");
+  
+    let mealwaiting;
+    response.then((res) => {
+        // console.log(res);
         appendData(res.categories, container);
     })
-    .catch((err) =>{
-        console.log("Error from catch :", err);
+        .catch((err) => {
+            console.log("Error from catch :", err);
+        })
+
+ 
+    // setDataFunc();
+
+
+    var inputData = document.querySelector(".inputbox");
+    inputData.addEventListener("input", searchRecipie);
+
+    rspData.style.display="none";
+   
+    
+    inputData.addEventListener("click", ()=>{
+        rspData.style.display="block";
     })
+    async function searchRecipie() {
+        try {
+            // inputData.value;
+            var input = document.querySelector(".inputbox").value;
+            let foodResp = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`);
+            let data = await foodResp.json();
+            console.log("data :", data);
+            showSearchMeal(data.meals);
+
+        }
+        catch (err) {
+            console.log("Error from catch :", err);
+        }
+    }
+    // searchRecipie();
+   
+    function showSearchMeal(rec) {
+        rspData.innerHTML="";
+        rec.map(({strMealThumb,strCategory,strArea,strMeal}) => {
+            let mainDiv = document.createElement("div");
+            let desc = document.createElement("div");
+            let img = document.createElement("img");
+            let resTitle = document.createElement("h3");
+            let area = document.createElement("h3");
+       
+
+            img.src = strMealThumb;
+            resTitle.innerText = strCategory;
+            area.innerText = strArea;
+
+            let send_data ={
+                strMealThumb,
+                strCategory,
+                strArea,
+                strMeal
+            }
+            mainDiv.addEventListener("click",()=>{
+               dunc(send_data);
+            })
+
+            desc.append(resTitle,area);
+            mainDiv.append(img,desc);
+            rspData.append(mainDiv);
+           
+        })
+    }
+    function dunc(even){
+      localStorage.setItem("foodRecipes", JSON.stringify(even));
+      window.location.href="./showRecipes.html";
+    }
+
+
 </script>

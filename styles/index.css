@@ -1,10 +1,14 @@
-
+body{
+    margin: 0;
+}
 .navbar{
-    display: flex;
     padding: 5px;
-    /* border: 1px solid black; */
+    display: flex;
     text-align: center;
+    border-radius: 5px;
+    border: 3px solid black;
     justify-content: space-between;
+    background-color: rgb(193, 250, 226);
 }
 .leftSide{
     flex: 1;
@@ -23,7 +27,6 @@
 }
 .inputbox{
     width: 75%;
-    /* text-align: center; */
     font-size: 18px;
     font-weight: 600;
     border-radius: 5px;
@@ -36,7 +39,6 @@ a{
     padding: 5px 10px;
     font-weight: bold;
     text-decoration: none;
-    /* display: inline-block; */
 }
 a:hover{
     border-radius: 10px;
@@ -47,41 +49,90 @@ a:hover{
 
 /* wirte styles for recepie data .. */
 .container{
-    width: 90%;
-    margin:10px auto;
+    margin: auto;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    height: 700px;
+    overflow: auto;
     grid-gap: 30px;
+    grid-template-columns: repeat(4,1fr);
 
 }
 .container>div{
     padding: 20px;
     cursor: pointer;
-    border-radius: 10px;
     text-align: center;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    /* border: 1px solid black; */
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
 }
 .container>div:hover{
     padding: 0;
     cursor: pointer;
     transition: .8s all ease;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    /* border: 1px solid black; */
 
 }
 .container>div>div>img{
     border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  /* border: 1px solid black; */
+    width: 100%;
+    height: 100%;
 
 }
 .container>div>p{
-font-size: 18px;
-font-weight: bold;
-font-family:Verdana, Geneva, Tahoma, sans-serif;
-  /* border: 1px solid black; */
+    font-size: 18px;
+    font-weight: bold;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 
+}
+.recpData{
+    width: 38%;
+    height: 300px;
+    margin-left: 22%;
+    overflow-y: auto;
+    position:absolute;
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: rgb(230, 227, 227);
+} 
+.recpData>div{
+    width: 98.5%;
+    height: 80px;
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    background-color: rgb(157, 252, 255);
+    border: 3px solid #0a0099;
+} 
+.recpData>div>img{
+    width: 25%;
+    height: 100%;
+    margin-right: 10px;
+} 
+.recpData>div>div>h3{
+   margin-top: 0;
+} 
+
+
+/* latestRecipe page css here  */
+.latestRecipe{
+    width: 50%;
+    height: auto; 
+    display: flex;   
+    padding: 10px;
+    margin:50px auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}
+.latestRecipe>div:first-child{
+    width: 50%;
+    height: 300px;
+    margin-right: 20px;
+    
+}
+.latestRecipe>div:first-child>img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    
 }

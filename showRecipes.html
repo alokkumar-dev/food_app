@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>latest tecipe</title>
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+<body>
+    <nav></nav>
+    <div class="latestRecipe"></div>
+</body>
+</html>
+<script type="module">
+    import navbar from "./components/navbar.js";
+    document.querySelector("nav").innerHTML = navbar();
+    
+    let reciDiv = document.querySelector(".latestRecipe");
+    let recipes = JSON.parse(localStorage.getItem("foodRecipes")) || [];
+    showLatest(recipes);
+
+    function showLatest(elem){
+        // reciDiv.innerHTML="";
+           let imgDiv = document.createElement("div");
+           let aboutDiv = document.createElement("div");
+           let img = document.createElement("img");
+           let categ = document.createElement("h1");
+           let areatag = document.createElement("h3");
+           let strtag = document.createElement("h3");
+
+
+           img.src = elem.strMealThumb;
+           categ.innerText = elem.strCategory;
+           areatag.innerText = elem.strArea;
+           strtag.innerText = elem.strMeal;
+
+
+           imgDiv.append(img);
+           aboutDiv.append(categ,areatag,strtag);
+           reciDiv.append(imgDiv,aboutDiv);
+
+
+    }
+</script>

@@ -12,12 +12,21 @@ async function getData(url){
 }
 
 function appendData(data,location){
-    data.map(({strCategory,strCategoryThumb}) => {
+    data.map(({strCategory,strCategoryThumb,strMeal}) => {  
         let mainDiv = document.createElement("div");
         let imgDiv = document.createElement("div");
         let img = document.createElement("img");
         let p = document.createElement("p");
 
+        let receObj ={
+            strMealThumb : strCategoryThumb,
+            strCategory:  strCategory,
+            strMeal :  strMeal
+        }
+
+        mainDiv.addEventListener("click",() =>{
+            sendRecp(receObj);
+        })
         p.innerText = strCategory;
         img.src = strCategoryThumb;
 
@@ -26,6 +35,10 @@ function appendData(data,location){
         location.append(mainDiv);
 
     });
+}
+function sendRecp(data){
+   localStorage.setItem("foodRecipes", JSON.stringify(data));
+   window.location.href = "./showRecipes.html";
 }
 
 export {getData,appendData};
