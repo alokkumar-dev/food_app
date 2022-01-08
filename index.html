@@ -25,13 +25,13 @@
     // console.log(getData,appendData);
 
 
-    let response = getData("https://www.themealdb.com/api/json/v1/1/categories.php");
+    let response = getData("https://www.themealdb.com/api/json/v1/1/categories.php");   //
 
 
     let rspData =  document.querySelector(".recpData");    
     let container = document.querySelector(".container");
   
-    let mealwaiting;
+    // let mealwaiting;
     response.then((res) => {
         // console.log(res);
         appendData(res.categories, container);
