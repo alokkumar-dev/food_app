@@ -85,12 +85,13 @@ a:hover{
 
 }
 .recpData{
-    width: 38%;
+    width: 39%;
     height: 300px;
+    display: none;
     margin-left: 22%;
     overflow-y: auto;
     position:absolute;
-    border-radius: 5px;
+    border-radius:0 0 5px 5px;
     border: 2px solid black;
     background-color: rgb(230, 227, 227);
 } 

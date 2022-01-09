@@ -47,12 +47,24 @@
     var inputData = document.querySelector(".inputbox");
     inputData.addEventListener("input", searchRecipie);
 
-    rspData.style.display="none";
    
     
-    inputData.addEventListener("click", ()=>{
+    inputData.addEventListener("mouseover", ()=>{
         rspData.style.display="block";
-    })
+    });
+    
+    inputData.addEventListener("mouseout", ()=>{
+        rspData.style.display="none";
+    });
+    
+    rspData.addEventListener("mouseover", ()=>{
+        rspData.style.display="block";
+    });
+    
+    rspData.addEventListener("mouseout", ()=>{
+        rspData.style.display="none";
+    });
+    
     async function searchRecipie() {
         try {
             // inputData.value;
