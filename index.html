@@ -30,6 +30,7 @@
 
     let rspData =  document.querySelector(".recpData");    
     let container = document.querySelector(".container");
+    let res_waiting;
   
     // let mealwaiting;
     response.then((res) => {
@@ -45,7 +46,7 @@
 
 
     var inputData = document.querySelector(".inputbox");
-    inputData.addEventListener("input", searchRecipie);
+    inputData.addEventListener("input", searchRecipie, 1000);
 
    
     
@@ -69,6 +70,11 @@
         try {
             // inputData.value;
             var input = document.querySelector(".inputbox").value;
+
+            if(input.length <=2){
+                return false;
+            }
+
             let foodResp = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`);
             let data = await foodResp.json();
             console.log("data :", data);
@@ -82,6 +88,9 @@
     // searchRecipie();
    
     function showSearchMeal(rec) {
+        if(rec ===null){
+            return false;
+        }
         rspData.innerHTML="";
         rec.map(({strMealThumb,strCategory,strArea,strMeal}) => {
             let mainDiv = document.createElement("div");
@@ -111,10 +120,12 @@
            
         })
     }
+   
     function dunc(even){
       localStorage.setItem("foodRecipes", JSON.stringify(even));
       window.location.href="./showRecipes.html";
     }
 
+    
 
 </script>
